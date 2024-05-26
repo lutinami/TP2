@@ -13,18 +13,25 @@
 using namespace std;
 
 class Matriz {
-public:
+private:
 	int filas, columnas;
 	vector<vector<double>> matriz;
-	vector<double>::iterator col;
-	vector<vector<double>>::iterator fila;
+public:
 	// constructores
 	Matriz();
 	Matriz(int n, int m);
 	Matriz(const Matriz& M);
 
-	// funciones
-	friend ostream& operator<<(ostream& os, const Matriz& mat);
+	// funciones miembro
+	vector<vector<double>> getMatriz();
+
+	// sobrecarga de operadores
+	friend ostream& operator<<(ostream& os, Matriz& mat);
+	Matriz operator+(Matriz& q);
+	Matriz operator-(const Matriz& q)const;
+	Matriz operator!()const;
+	Matriz operator*(const Matriz& q)const;
+
 	// destructores
 	virtual ~Matriz();
 };
