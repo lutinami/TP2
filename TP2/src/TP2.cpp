@@ -9,13 +9,23 @@
 using namespace std;
 
 int main() {
-	Matriz a, b, c, d;
+	Matriz a, b, c, d, e, f, g;
 	a = Matriz();
 	b = Matriz(4, 5);
 	c = Matriz(b);
 	d = b + c;
 
-	cout << "esta es mi matriz:\n" << d << "wowee zowee !!\n";
+	e = Matriz(5, 4);
+	e = e + e;
+	f = d*e;
+
+	cout << "esta es mi matriz:\n" << b << "wowee zowee !!\n";
+	b = !(b);
+	cout << "La di vuelta ://\n" << b << endl;
+	cout << "producto escalar?? en esta economia ?? \n" << b.ProductoPorEscalar(6) << "si!!"<< endl;
+	cout << "el tamaño de la matriz b es " << b.numel() << "?? no lo voy a chequear (no se contar)"<< endl;
+	cout << "mira, por alguna razon sume todos los elementos y me dio " << b.cumsum() << "\ndato: la funcion se llama cum sum" << endl;
+	cout << "maximo de b es " << b.max() << " y el minimo " << b.min() << "?????? son lo mismo !?!?!?!?" << endl;
 	return 0;
 }
 

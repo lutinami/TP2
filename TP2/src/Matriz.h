@@ -20,16 +20,28 @@ public:
 	// constructores
 	Matriz();
 	Matriz(int n, int m);
+	Matriz(int n, int m, double a);
 	Matriz(const Matriz& M);
 
 	// funciones miembro
-	vector<vector<double>> getMatriz();
+	vector<vector<double>> getMatriz(); // devuelve la matriz de un objeto Matriz
+
+	Matriz& ProductoPorEscalar(double esc); // producto escalar
+	int numel(); 		// devuelve el numero total del elementos
+	double cumsum();	// devuelve la suma de todos los elementos
+	double max();		// devuelve el maximo elemento
+	double min();			// devuelve el minimo elemento
 
 	// sobrecarga de operadores
+	// imprimir una matriz en pantalla
 	friend ostream& operator<<(ostream& os, Matriz& mat);
-	Matriz operator+(Matriz& q);
+	// suma de matrices
+	Matriz operator+(const Matriz& q)const;
+	// resta de matrices
 	Matriz operator-(const Matriz& q)const;
+	// matriz transpuesta
 	Matriz operator!()const;
+	// producto matricial
 	Matriz operator*(const Matriz& q)const;
 
 	// destructores
