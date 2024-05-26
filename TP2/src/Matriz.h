@@ -16,14 +16,15 @@ class Matriz {
 public:
 	int filas, columnas;
 	vector<vector<double>> matriz;
+	vector<double>::iterator col;
+	vector<vector<double>>::iterator fila;
 	// constructores
 	Matriz();
-	//Matriz(int n, int m);
-	//Matriz(const Matriz& M);
+	Matriz(int n, int m);
+	Matriz(const Matriz& M);
 
 	// funciones
-	//Matriz& operator=(const Matriz& M);
-	//friend ostream& operator<<(ostream& os, const Matriz& mat);
+	friend ostream& operator<<(ostream& os, const Matriz& mat);
 	// destructores
 	virtual ~Matriz();
 };
