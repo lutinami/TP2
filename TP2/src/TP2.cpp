@@ -9,12 +9,13 @@
 using namespace std;
 
 int main() {
-	Matriz a, b, c;
+	Matriz a, b, c, d;
 	a = Matriz();
 	b = Matriz(4, 5);
 	c = Matriz(b);
+	d = b + c;
 
-	cout << b << endl;
+	cout << "esta es mi matriz:\n" << d << "wowee zowee !!\n";
 	return 0;
 }
 
