@@ -9,21 +9,21 @@
 #define MATRIZ_H_
 
 #include<iostream>
+#include<vector>
 using namespace std;
 
 class Matriz {
-private:
-	int n, m;
-	double **matriz;
 public:
+	int filas, columnas;
+	vector<vector<double>> matriz;
 	// constructores
 	Matriz();
-	Matriz(int n, int m);
-	Matriz(const Matriz& M);
+	//Matriz(int n, int m);
+	//Matriz(const Matriz& M);
 
 	// funciones
-	Matriz& operator=(const Matriz& M);
-	friend ostream& operator<<(ostream& os, const Matriz& mat);
+	//Matriz& operator=(const Matriz& M);
+	//friend ostream& operator<<(ostream& os, const Matriz& mat);
 	// destructores
 	virtual ~Matriz();
 };
