@@ -11,13 +11,15 @@
 #include "Matriz.h"
 
 class MatrizCuadrada: public Matriz {
-private:
+protected:
 	int size_n;
 public:
 	MatrizCuadrada();
 	MatrizCuadrada(int n);
 	MatrizCuadrada(int n, double a);
 	MatrizCuadrada(vector<vector<double>> mat);
+
+	int getSize_n();
 
 	double determinante();
 	MatrizCuadrada cortaFilaColumna(size_t i, size_t j);
