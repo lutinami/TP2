@@ -86,7 +86,7 @@ public:
 	// --------------------------------------------------------------------------------
 	Matriz& ProductoPorEscalar(double esc);	// producto escalar de la matriz
 	// --------------------------------------------------------------------------------
-	int numel(); 				// devuelve el numero total del elementos
+	virtual int numel(); 				// devuelve el numero total del elementos
 						// de la matriz
 	// --------------------------------------------------------------------------------
 	double cumsum();			// devuelve la suma de todos los elementos

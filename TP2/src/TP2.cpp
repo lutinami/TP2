@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include "Matriz.h"
+#include "MatrizCuadrada.h"
 using namespace std;
 
 int main() {
@@ -40,5 +41,17 @@ int main() {
 	x = Matriz({{3, 4, 5}, {6, 1, 1}, {3, 3, 1}, {2, 1, 1}});
 	cout << "matriz definida 1 por 1, de " << x.getFilas() << " filas y "
 			<< x.getColumnas() << " columnas: \n" << x << endl;
+
+	MatrizCuadrada testing = MatrizCuadrada(5, 2);
+	testing = MatrizCuadrada({{2,2,1}, {8,1,9}, {7,2,9}});
+	//testing = MatrizCuadrada({{2, 1}, {4, 4}});
+	//Matriz Cuadrada testing2 = MatrizCuadrada({{1,2,3},{0,2,1},{0,0,5}});
+	//MatrizCuadrada test3 = testing.adjunta();
+	MatrizCuadrada inversa_t = ~testing;
+	cout << "la inversa de la matriz: \n"<< testing
+			<< "es: \n" << inversa_t << endl;
+	MatrizCuadrada division_t = testing/testing;
+	cout << "division de matrices: \n" << division_t << endl;
+
 	return 0;
 }
