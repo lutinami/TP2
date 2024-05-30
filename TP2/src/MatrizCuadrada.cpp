@@ -103,6 +103,9 @@ int MatrizCuadrada::numel() {
 	return (size_n*size_n);
 }
 
+int MatrizCuadrada::getSize_n() {
+	return (size_n);
+}
 
 MatrizCuadrada MatrizCuadrada::operator +(const MatrizCuadrada &q) const {
 	Matriz auxiliar1 = Matriz(*this);
