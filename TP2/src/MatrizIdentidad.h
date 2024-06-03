@@ -12,10 +12,15 @@
 
 class MatrizIdentidad: public MatrizCuadrada {
 public:
-	MatrizIdentidad();
-	MatrizIdentidad(int n);
-	MatrizIdentidad(MatrizCuadrada M);
+	// Constructores -------------------------------------------------------------------------
+	MatrizIdentidad();			// crea una matriz identidad de tamaño 4
+	MatrizIdentidad(int n);			// crea una matriz identidad de tamaño n
+	MatrizIdentidad(MatrizCuadrada M);	// crea la matriz identidad de una matriz cuadrada
+	// ---------------------------------------------------------------------------------------
+	
+	// Destructores -----------
 	virtual ~MatrizIdentidad();
+	// ------------------------
 };
 
 #endif /* SRC_MATRIZIDENTIDAD_H_ */
