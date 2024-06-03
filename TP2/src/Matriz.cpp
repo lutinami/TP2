@@ -65,13 +65,19 @@ Matriz::Matriz(const Matriz &M) {	// Copia un objeto Matriz a otro
 
 // SETTERS -----------------------------------------------------------------------
 // -------------------------------------------------------------------------------
-void Matriz::setMatriz(int n, int m, double a) {	// Cambia la matriz
-	this->matriz.clear();				// del objeto, sin
-	vector<double> v(m, a);				// cambiar el resto
-	for(int i=0; i<n; i++){				// de variables
-		this->matriz.push_back(v);		//
-	}						//
-}							//
+void Matriz::setMatriz(vector<vector<double> > mat) {
+	this->matriz.clear();
+	this->matriz = mat;
+	this->filas = mat.size();
+	this->columnas = mat[0].size();
+}
+void Matriz::setMatrizUnidad(int n, int m, double a) {
+	this->matriz.clear();
+	vector<double> v(m, a);
+	for(int i=0; i<n; i++){
+		this->matriz.push_back(v);
+	}
+}
 // -------------------------------------------------------------------------------
 void Matriz::setFilas(int n) {	// Cambia la cantidad de filas, si
 	this->filas = n;	// cambiar el resto de variables

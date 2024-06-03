@@ -15,21 +15,21 @@ MatrizCuadrada::MatrizCuadrada() {
 	size_n = 4;
 	this->setFilas(4);
 	this->setColumnas(4);
-	this->setMatriz(filas, columnas, 0);
+	this->setMatrizUnidad(filas, columnas, 0);
 }
 
 MatrizCuadrada::MatrizCuadrada(int n) {
 	size_n = n;
 	this->setFilas(n);
 	this->setColumnas(n);
-	this->setMatriz(n, n, 0);
+	this->setMatrizUnidad(n, n, 0);
 }
 
 MatrizCuadrada::MatrizCuadrada(int n, double a) {
 	size_n = a;
 	this->setFilas(n);
 	this->setColumnas(n);
-	this->setMatriz(n, n, a);
+	this->setMatrizUnidad(n, n, a);
 }
 
 MatrizCuadrada::MatrizCuadrada(vector<vector<double> > mat) {

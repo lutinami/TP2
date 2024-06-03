@@ -39,9 +39,8 @@ public:
 
 	// Setters ---------------------------------------------------------------------------------
 	// -----------------------------------------------------------------------------------------
-	void setMatriz(int n, int m, double a);				// Cambia la matriz del
-									// objeto, sin cambiar
-									// el resto de variables
+	void setMatriz(vector<vector<double>> mat);
+	void setMatrizUnidad(int n, int m, double a);
 	// -----------------------------------------------------------------------------------------
 	void setFilas(int n);						// Cambia la cantidad de
 									// filas a n, sin cambiar
