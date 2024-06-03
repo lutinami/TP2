@@ -156,7 +156,6 @@ double Matriz::cumsum() {									// Recorriendo la matriz con
 	}
 	return suma_total;
 }
-
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------
 double Matriz::max() {										// Recorriendo la matriz
 	double max = this->matriz[0][0];							// con iteradores,
@@ -169,7 +168,6 @@ double Matriz::max() {										// Recorriendo la matriz
 	}
 	return max;
 }
-
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------
 double Matriz::min() {										// Recorriendo la matriz
 	double min = this->matriz[0][0];							// con iteradores,
