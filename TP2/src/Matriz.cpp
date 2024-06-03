@@ -31,7 +31,7 @@ Matriz::Matriz() {					// Sin argumentos:
 		matriz.push_back(v);			// 0 0 0 0
 	}						//
 }							//
-
+// -------------------------------------------------------------------------------------------
 Matriz::Matriz(int n, int m) {				// Matriz 1 con n filas y m columnas
 	filas = n;					// 1 1 1 1 ... 1
 	columnas = m;					// 1 1 1 1 ... 1
@@ -40,7 +40,7 @@ Matriz::Matriz(int n, int m) {				// Matriz 1 con n filas y m columnas
 		matriz.push_back(v);			// . . . . ... 1
 	}						// . . . . ... 1
 }							// 1 1 1 1 ... 1
-
+// -------------------------------------------------------------------------------------------
 Matriz::Matriz(int n, int m, double a) {		// Matriz "a" con n filas y m columnas
 	filas = n;					// a a a a ... a
 	columnas = m;					// a a a a ... a
@@ -49,13 +49,13 @@ Matriz::Matriz(int n, int m, double a) {		// Matriz "a" con n filas y m columnas
 		matriz.push_back(v);			// . . . . ... a
 	}						// . . . . ... a
 }							// a a a a ... a
-
+// -------------------------------------------------------------------------------------------
 Matriz::Matriz(vector<vector<double> > matriz) {	// Define al objeto
 	this->matriz = matriz;				// en base a una
 	this->columnas = matriz.size();			// matriz ingresada
 	this->filas = matriz[0].size();			//
 }							//
-
+// -------------------------------------------------------------------------------------------
 Matriz::Matriz(const Matriz &M) {			// Copia un objeto Matriz a otro
 	filas = M.filas;				// objeto Matriz
 	columnas = M.columnas;				//
@@ -65,54 +65,54 @@ Matriz::Matriz(const Matriz &M) {			// Copia un objeto Matriz a otro
 
 
 
-// SETTERS ------------------------------------------------------------------------------
-void Matriz::setMatriz(vector<vector<double> > mat) {
-	this->matriz.clear();
-	this->matriz = mat;
-	this->filas = mat.size();
-	this->columnas = mat[0].size();
-}
-// ---------------------------------------------------------------------------------------
-void Matriz::setMatrizUnidad(int n, int m, double a) {
-	this->matriz.clear();
-	vector<double> v(m, a);
-	for(int i=0; i<n; i++){
-		this->matriz.push_back(v);
-	}
-}
-// ---------------------------------------------------------------------------------------
-void Matriz::setFilas(int n) {				// Cambia la cantidad de filas, si
-	this->filas = n;				// cambiar el resto de variables
-}
-// ---------------------------------------------------------------------------------------
-void Matriz::setColumnas(int m) {			// Cambia la cantidad de columnas,
-	this->columnas = m;				// sin cambiar el resto de
-}							// variables
-// ---------------------------------------------------------------------------------------
-void Matriz::setCoordenada(int n, int m, double a) {	// Cambia el valor del
-	this->matriz[n][m] = a;				// elemento en la fila n
-}							// y columna m
-// ---------------------------------------------------------------------------------------
-void Matriz::setFilaValor(int n, double a) {		// Cambia el valor de los
-	for(int i = 0; i<this->columnas; i++){		// elementos de la fila n
-		this->matriz[n][i] = a;			//
-	}						//
-}							//
-// ---------------------------------------------------------------------------------------
-void Matriz::setColumnaValor(int m, double a) {		// Cambia el valor de
-	for(int i = 0; i<this->filas; i++){		// los elementos de la
-		this->matriz[i][m] = a;			// columna m
-	}						//
-}							//
-// ---------------------------------------------------------------------------------------
-void Matriz::setRango(int n_a, int n_b, int m_c, int m_d, double x) {
-	for (int i = n_a; i<=n_b; i++){
-		for (int j = m_c; j<=m_d; j++){
-			this->matriz[j][i] = x;
-		}
-	}
-}
-// ---------------------------------------------------------------------------------------
+// SETTERS ----------------------------------------------------------------------------------------------
+void Matriz::setMatriz(vector<vector<double> > mat) {			// Cambia la matriz del objeto
+	this->matriz.clear();						// con un vector 2d
+	this->matriz = mat;`						//
+	this->filas = mat.size();					//
+	this->columnas = mat[0].size();					//
+}									//
+// -------------------------------------------------------------------------------------------------------
+void Matriz::setMatrizUnidad(int n, int m, double a) {			// Cambia la matriz del objeto
+	this->matriz.clear();						// con una nueva de n filas y
+	vector<double> v(m, a);						// m columnas, y la llena del
+	for(int i=0; i<n; i++){						// valor a
+		this->matriz.push_back(v);				//
+	}								//
+}									//
+// -------------------------------------------------------------------------------------------------------
+void Matriz::setFilas(int n) {						// Cambia la cantidad de filas, si
+	this->filas = n;						// cambiar el resto de variables
+}									//
+// -------------------------------------------------------------------------------------------------------
+void Matriz::setColumnas(int m) {					// Cambia la cantidad de columnas,
+	this->columnas = m;						// sin cambiar el resto de
+}									// variables
+// -------------------------------------------------------------------------------------------------------
+void Matriz::setCoordenada(int n, int m, double a) {			// Cambia el valor del
+	this->matriz[n][m] = a;						// elemento en la fila n
+}									// y columna m
+// -------------------------------------------------------------------------------------------------------
+void Matriz::setFilaValor(int n, double a) {				// Cambia el valor de los
+	for(int i = 0; i<this->columnas; i++){				// elementos de la fila n
+		this->matriz[n][i] = a;					//
+	}								//
+}									//
+// -------------------------------------------------------------------------------------------------------
+void Matriz::setColumnaValor(int m, double a) {				// Cambia el valor de
+	for(int i = 0; i<this->filas; i++){				// los elementos de la
+		this->matriz[i][m] = a;					// columna m
+	}								//
+}									//
+// -------------------------------------------------------------------------------------------------------
+void Matriz::setRango(int n_a, int n_b, int m_c, int m_d, double x) {	// Cambia los valores
+	for (int i = n_a; i<=n_b; i++){					// en un rango de filas y
+		for (int j = m_c; j<=m_d; j++){				// columnas
+			this->matriz[j][i] = x;				//
+		}							//
+	}								//
+}									//
+// -------------------------------------------------------------------------------------------------------
 
 
 
@@ -132,7 +132,7 @@ int Matriz::getColumnas() {			// devuelve la cantidad de columnas
 
 
 
-// FUNCIONES -----------------------------------------------------------------------------------------------
+// FUNCIONES ----------------------------------------------------------------------------------------------------------------------------------------------
 Matriz& Matriz::ProductoPorEscalar(double esc) {						// Recorriendo la matriz con
 	for(fila = this->matriz.begin(); fila != this->matriz.end(); fila++){			// iteradores, multiplica cada
 		for(columna = fila->begin(); columna != fila->end(); columna++){		// elemento de la matriz por
@@ -185,8 +185,8 @@ double Matriz::min() {										// Recorriendo la matriz
 // ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+
 // SOBRECARGA DE OPERADORES ---------------------------------------------------------------------------------------------------------------------------------------------------------
-// ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ostream& operator<<(ostream& os, Matriz& mat){														// Recorriendo la matriz
 	for(fila = mat.matriz.begin(); fila != mat.matriz.end(); fila++){										// con iteradores, se
 		for(columna = fila->begin(); columna != fila->end(); columna++){									// imprime cada elemento
@@ -249,7 +249,7 @@ Matriz Matriz::operator *(const Matriz &q) const {													// Verificando qu
 
 
 // DESTRUCTORES---------------------------
-// ---------------------------------------
 Matriz::~Matriz() {
 	// TODO Auto-generated destructor stub
 }
+// ---------------------------------------
