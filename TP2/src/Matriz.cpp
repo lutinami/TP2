@@ -32,19 +32,19 @@ Matriz::Matriz() {					// Sin argumentos:
 	}						//
 }							//
 // -------------------------------------------------------------------------------------------
-Matriz::Matriz(int n, int m) {				// Matriz 1 con n filas y m columnas
-	srand(time(0));
-	filas = n;					// 1 1 1 1 ... 1
-	columnas = m;					// 1 1 1 1 ... 1
-	vector<double> v(m, 1);				// 1 1 1 1 ... 1
+Matriz::Matriz(int n, int m) {				// Matriz de n filas y m columnas
+	srand(time(0));					// donde cada uno de sus elementos
+	filas = n;					// es generado aleatoriamente
+	columnas = m;					// dentro de un rango de 0 a 100.
+	vector<double> v(m, 1);				// 
 	for(int i=0; i<n; i++){
 		vector<double> v;
 		for(int j=0; j<m;j++){
-			v.push_back((rand()%101)*1.0);							// . . . . ... 1
+			v.push_back((rand()%101)*1.0);
 		}
-		matriz.push_back(v);			// . . . . ... 1
-	}						// . . . . ... 1
-}							// 1 1 1 1 ... 1
+		matriz.push_back(v);
+	}
+}
 // -------------------------------------------------------------------------------------------
 Matriz::Matriz(int n, int m, double a) {		// Matriz "a" con n filas y m columnas
 	filas = n;					// a a a a ... a
@@ -58,7 +58,7 @@ Matriz::Matriz(int n, int m, double a) {		// Matriz "a" con n filas y m columnas
 Matriz::Matriz(vector<vector<double> > matriz) {	// Define al objeto
 	this->matriz = matriz;				// en base a una
 	this->columnas = matriz.size();			// matriz ingresada
-	this->filas = matriz[0].size();			//
+	this->filas = matriz[0].size();			// como vector 2d
 }							//
 // -------------------------------------------------------------------------------------------
 Matriz::Matriz(const Matriz &M) {			// Copia un objeto Matriz a otro
@@ -79,20 +79,20 @@ void Matriz::setMatriz(vector<vector<double> > mat) {			// Cambia la matriz del 
 }									//
 // -------------------------------------------------------------------------------------------------------
 void Matriz::setMatrizUnidad(int n, int m, double a) {			// Cambia la matriz del objeto
-	this->filas = n;
-	this->columnas = m;
-	this->matriz.clear();						// con una nueva de n filas y
-	vector<double> v(m, a);						// m columnas, y la llena del
-	for(int i=0; i<n; i++){						// valor a
-		this->matriz.push_back(v);				//
-	}								//
-}									//
+	this->filas = n;						// con una nueva de n filas y
+	this->columnas = m;						// m columnas, y la llena del
+	this->matriz.clear();						// valor a
+	vector<double> v(m, a);
+	for(int i=0; i<n; i++){
+		this->matriz.push_back(v);
+	}
+}
 // -------------------------------------------------------------------------------------------------------
-void Matriz::setMatrizAleatoria(int n, int m) {
-	this->filas = n;
-	this->columnas = m;
-	this->matriz.clear();					// 1 1 1 1 ... 1
-	vector<double> v(m, 1);				// 1 1 1 1 ... 1
+void Matriz::setMatrizAleatoria(int n, int m) {		// Cambia la matriz por una matriz de n filas y 
+	this->filas = n;				// m columnas donde cada elemento es generado
+	this->columnas = m;				// aleatoriamente,
+	this->matriz.clear();
+	vector<double> v(m, 1);	
 	for(int i=0; i<n; i++){
 		vector<double> v;
 		for(int j=0; j<m;j++){
@@ -184,37 +184,37 @@ ostream& operator<<(ostream& os, Matriz& mat){														// Recorriendo la ma
 	return os;
 }
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Matriz Matriz::operator +(const Matriz &q) const {													// Creando una matriz suma
-	if(this->filas != q.filas && this->columnas != q.filas){
-		cout << "Son de distinto tamaño - no pueden ser sumadas." << endl;
-		return q;
-	}
-	int suma_filas = (this->filas > q.filas)?this->filas:q.filas;											// de filas y columnas igual
-	int suma_col = (this->columnas > q.columnas)?this->columnas:q.columnas;										// a las de la matriz de
-
-	Matriz suma = Matriz(suma_filas, suma_col);													// mayor tamaño.
-																			//
-	for(int i=0; i< filas; i++){															// Luego, recorriendo la matriz,
-		transform(this->matriz[i].begin(), this->matriz[i].end(), q.matriz[i].begin(), suma.matriz[i].begin(), plus<double>());			// se utiliza las funciones
-	}																		// transform() y plus<> de la
-	return suma;																	// biblioteca algorithm para
-}																			// sumar las matrices.
+Matriz Matriz::operator +(const Matriz &q) const {													// Se verifica que las matrices
+	if(this->filas != q.filas && this->columnas != q.filas){											// tengan igual cantidad de
+		cout << "Son de distinto tamaño - no pueden ser sumadas." << endl;									// filas y columnas. 
+		return q;																// Se crea una matriz suma
+	}																		// auxiliar.
+	int suma_filas = this->filas;															// Luego, recorriendo la matriz,
+	int suma_col = this->columnas;															// se utilizan las funciones
+																			// transform() y plus<> de la
+	Matriz suma = Matriz(suma_filas, suma_col);													// biblioteca algorithm para 
+																			// sumar las matrices
+	for(int i=0; i< filas; i++){															// 
+		transform(this->matriz[i].begin(), this->matriz[i].end(), q.matriz[i].begin(), suma.matriz[i].begin(), plus<double>());			// 
+	}																		// 
+	return suma;																	// 
+}																			// 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Matriz Matriz::operator -(const Matriz &q) const {													// Creando una matriz resta
-	if(this->filas != q.filas && this->columnas != q.filas){
-		cout << "Son de distinto tamaño - no pueden ser restadas." << endl;
-		return q;
-	}
-	int resta_filas = (this->filas > q.filas)?this->filas:q.filas;											// de filas y columnas igual
-	int resta_col = (this->columnas > q.columnas)?this->columnas:q.columnas;									// a las de la matriz de
-	Matriz resta = Matriz(resta_filas, resta_col);													// menor tamaño.
-																			//
-	for(int i=0; i< filas; i++){															// Luego, recorriendo la
-		transform(this->matriz[i].begin(), this->matriz[i].end(),q.matriz[i].begin(), resta.matriz[i].begin(), minus<double>());		// matriz, se utiliza las
-	}																		// funciones transform() y
-	return resta;																	// plus<> de la bilbioteca
-}																			// algorithm para restar las
-																			// matrices
+Matriz Matriz::operator -(const Matriz &q) const {													// Se verifica que las matrices
+	if(this->filas != q.filas && this->columnas != q.filas){											// tengan igual cantidad de
+		cout << "Son de distinto tamaño - no pueden ser restadas." << endl;									// filas y columnas.				
+		return q;																// Se crea una matriz resta
+	}																		// auxiliar.
+	int resta_filas = this->filas;															// Luego, recorriendo la matriz,
+	int resta_col = (this->columnas;														// se utilizan las funciones
+	Matriz resta = Matriz(resta_filas, resta_col);													// transform() y minus<> de la
+																			// biblioteca algorithm para 
+	for(int i=0; i< filas; i++){															// restar las matrices
+		transform(this->matriz[i].begin(), this->matriz[i].end(),q.matriz[i].begin(), resta.matriz[i].begin(), minus<double>());		// 
+	}																		// 
+	return resta;																	// 
+}																			// 
+																			// 
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Matriz Matriz::operator !() const {															// Usando una matriz auxiliar
 	Matriz trans = Matriz(this->columnas, this->filas);												// recorre la matriz, y le
@@ -229,20 +229,20 @@ Matriz Matriz::operator !() const {															// Usando una matriz auxiliar
 Matriz Matriz::operator *(const Matriz &q) const {													// Verificando que se
 	if(this->filas != q.columnas){															// pueda realizar el
 		cout << "No es posible realizar el producto matricial para estas matrices." << endl;							// producto matricial
-		return q;															// (si la cantidad de
+		return q;																// (si la cantidad de
 	}																		// filas de una coincide
 	int producto_filas = this->filas;														// con la cantidad de
 	int producto_col = q.columnas;															// columnas de otra),
-	Matriz producto = Matriz(producto_filas, producto_col, 0);									// se crea una nueva matriz
-	for(int i=0;i<producto_filas;i++){
-		for(int j=0;j<producto_col;j++){
-			for(int k=0;k<producto_col;k++){
-				producto.matriz[i][j]+=this->matriz[i][k]*q.matriz[k][j];
-			}
-		}
-	}
-	return producto;
-}																			// de la bilbioteca algorithm
+	Matriz producto = Matriz(producto_filas, producto_col, 0);											// se crea una nueva matriz
+	for(int i=0;i<producto_filas;i++){														// auxiliar.
+		for(int j=0;j<producto_col;j++){													// Luego, recorriendo la martiz
+			for(int k=0;k<producto_col;k++){												// se utiliza un tercer bucle
+				producto.matriz[i][j]+=this->matriz[i][k]*q.matriz[k][j];								// para recorrer la fila o 
+			}																// columna a multiplicar, 
+		}																	// sumando el resultado al
+	}																		// elemento de la matriz
+	return producto;																// auxiliar correspondiente.
+}																			// 
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
