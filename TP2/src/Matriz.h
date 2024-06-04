@@ -32,6 +32,7 @@ public:
 	// Setters -------------------------------------------------------------------------------------------------------------------------
 	void setMatriz(vector<vector<double>> mat);			// Cambia el valor de matriz con un vector 2D
 	void setMatrizUnidad(int n, int m, double a);			// Cambia el valor de matriz con los nuevos tamanos
+	void setMatrizAleatoria(int n, int m);
 	void setFilas(int n);						// Cambia el valor cantidad de filas
 	void setColumnas(int m);					// Cambia el valor cantidad de columnas
 	void setCoordenada(int n, int m, double a); 			// Cambia el valor del elemento en (n;m)
