@@ -10,6 +10,8 @@
 #include <algorithm>
 #include <string>
 #include <numeric>
+#include <cstdlib>
+#include <time.h>
 using namespace std;
 //-------------------
 
@@ -33,10 +35,15 @@ Matriz::Matriz() {					// Sin argumentos:
 }							//
 // -------------------------------------------------------------------------------------------
 Matriz::Matriz(int n, int m) {				// Matriz 1 con n filas y m columnas
+	srand(time(0));
 	filas = n;					// 1 1 1 1 ... 1
 	columnas = m;					// 1 1 1 1 ... 1
 	vector<double> v(m, 1);				// 1 1 1 1 ... 1
-	for(int i=0; i<n; i++){				// . . . . ... 1
+	for(int i=0; i<n; i++){
+		vector<double> v;
+		for(int j=0; j<m;j++){
+			v.push_back(rand()*1.0);							// . . . . ... 1
+		}
 		matriz.push_back(v);			// . . . . ... 1
 	}						// . . . . ... 1
 }							// 1 1 1 1 ... 1
@@ -80,6 +87,18 @@ void Matriz::setMatrizUnidad(int n, int m, double a) {			// Cambia la matriz del
 		this->matriz.push_back(v);				//
 	}								//
 }									//
+// -------------------------------------------------------------------------------------------------------
+void Matriz::setMatrizAleatoria(int n, int m) {
+	this->matriz.clear();					// 1 1 1 1 ... 1
+	vector<double> v(m, 1);				// 1 1 1 1 ... 1
+	for(int i=0; i<n; i++){
+		vector<double> v;
+		for(int j=0; j<m;j++){
+			v.push_back(rand()*1.0);
+		}
+		matriz.push_back(v);
+	}
+}
 // -------------------------------------------------------------------------------------------------------
 void Matriz::setFilas(int n) {						// Cambia la cantidad de filas, si
 	this->filas = n;						// cambiar el resto de variables

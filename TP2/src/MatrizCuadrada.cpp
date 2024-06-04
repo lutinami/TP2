@@ -27,7 +27,7 @@ MatrizCuadrada::MatrizCuadrada(int n) {
 	size_n = n;					// crea una matriz cuadrada nxn llena de 1
 	this->setFilas(n);				// usando los setters de la clase Matriz
 	this->setColumnas(n);				//
-	this->setMatrizUnidad(n, n, 0);			//
+	this->setMatrizAleatoria(n, n);			//
 }
 // ----------------------------------------------------------------------------------------------------
 MatrizCuadrada::MatrizCuadrada(int n, double a) {
