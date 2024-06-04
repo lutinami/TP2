@@ -33,12 +33,6 @@ public:
 	void setMatriz(vector<vector<double>> mat);			// Cambia el valor de matriz con un vector 2D
 	void setMatrizUnidad(int n, int m, double a);			// Cambia el valor de matriz con los nuevos tamanos
 	void setMatrizAleatoria(int n, int m);
-	void setFilas(int n);						// Cambia el valor cantidad de filas
-	void setColumnas(int m);					// Cambia el valor cantidad de columnas
-	void setCoordenada(int n, int m, double a); 			// Cambia el valor del elemento en (n;m)
-	void setFilaValor(int n, double a);				// Cambia el valor de los elementos en la fila n
-	void setColumnaValor(int m, double a);				// Cambia el valor de los elementos en la col m
-	void setRango(int n_a, int n_b, int m_c, int m_d, double x);	// Cambia el valor de los elementos entre rangos de columnas y filas
 	// ---------------------------------------------------------------------------------------------------------------------------------
 
 

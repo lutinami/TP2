@@ -18,22 +18,16 @@ using namespace std;
 // Constructores -------------------------------------------------------------------------------------
 MatrizCuadrada::MatrizCuadrada() {
 	size_n = 4;					// crea una matriz cuadrada 4x4 llena de ceros
-	this->setFilas(4);				// usando los setters de la clase Matriz
-	this->setColumnas(4);				//
-	this->setMatrizUnidad(filas, columnas, 0);	//
+	this->setMatrizUnidad(size_n, size_n, 0);	//
 }
 // ----------------------------------------------------------------------------------------------------
 MatrizCuadrada::MatrizCuadrada(int n) {
 	size_n = n;					// crea una matriz cuadrada nxn llena de 1
-	this->setFilas(n);				// usando los setters de la clase Matriz
-	this->setColumnas(n);				//
 	this->setMatrizAleatoria(n, n);			//
 }
 // ----------------------------------------------------------------------------------------------------
 MatrizCuadrada::MatrizCuadrada(int n, double a) {
 	size_n = a;					// crea una matriz cuadrada nxn llena de a
-	this->setFilas(n);				// usando los setters de la clase Matriz
-	this->setColumnas(n);				//
 	this->setMatrizUnidad(n, n, a);			//
 }
 // ----------------------------------------------------------------------------------------------------

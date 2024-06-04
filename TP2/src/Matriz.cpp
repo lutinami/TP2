@@ -42,7 +42,7 @@ Matriz::Matriz(int n, int m) {				// Matriz 1 con n filas y m columnas
 	for(int i=0; i<n; i++){
 		vector<double> v;
 		for(int j=0; j<m;j++){
-			v.push_back(rand()*1.0);							// . . . . ... 1
+			v.push_back((rand()%101)*1.0);							// . . . . ... 1
 		}
 		matriz.push_back(v);			// . . . . ... 1
 	}						// . . . . ... 1
@@ -81,6 +81,8 @@ void Matriz::setMatriz(vector<vector<double> > mat) {			// Cambia la matriz del 
 }									//
 // -------------------------------------------------------------------------------------------------------
 void Matriz::setMatrizUnidad(int n, int m, double a) {			// Cambia la matriz del objeto
+	this->filas = n;
+	this->columnas = m;
 	this->matriz.clear();						// con una nueva de n filas y
 	vector<double> v(m, a);						// m columnas, y la llena del
 	for(int i=0; i<n; i++){						// valor a
@@ -89,48 +91,18 @@ void Matriz::setMatrizUnidad(int n, int m, double a) {			// Cambia la matriz del
 }									//
 // -------------------------------------------------------------------------------------------------------
 void Matriz::setMatrizAleatoria(int n, int m) {
+	this->filas = n;
+	this->columnas = m;
 	this->matriz.clear();					// 1 1 1 1 ... 1
 	vector<double> v(m, 1);				// 1 1 1 1 ... 1
 	for(int i=0; i<n; i++){
 		vector<double> v;
 		for(int j=0; j<m;j++){
-			v.push_back(rand()*1.0);
+			v.push_back((rand()%101)*1.0);
 		}
 		matriz.push_back(v);
 	}
 }
-// -------------------------------------------------------------------------------------------------------
-void Matriz::setFilas(int n) {						// Cambia la cantidad de filas, si
-	this->filas = n;						// cambiar el resto de variables
-}									//
-// -------------------------------------------------------------------------------------------------------
-void Matriz::setColumnas(int m) {					// Cambia la cantidad de columnas,
-	this->columnas = m;						// sin cambiar el resto de
-}									// variables
-// -------------------------------------------------------------------------------------------------------
-void Matriz::setCoordenada(int n, int m, double a) {			// Cambia el valor del
-	this->matriz[n][m] = a;						// elemento en la fila n
-}									// y columna m
-// -------------------------------------------------------------------------------------------------------
-void Matriz::setFilaValor(int n, double a) {				// Cambia el valor de los
-	for(int i = 0; i<this->columnas; i++){				// elementos de la fila n
-		this->matriz[n][i] = a;					//
-	}								//
-}									//
-// -------------------------------------------------------------------------------------------------------
-void Matriz::setColumnaValor(int m, double a) {				// Cambia el valor de
-	for(int i = 0; i<this->filas; i++){				// los elementos de la
-		this->matriz[i][m] = a;					// columna m
-	}								//
-}									//
-// -------------------------------------------------------------------------------------------------------
-void Matriz::setRango(int n_a, int n_b, int m_c, int m_d, double x) {	// Cambia los valores
-	for (int i = n_a; i<=n_b; i++){					// en un rango de filas y
-		for (int j = m_c; j<=m_d; j++){				// columnas
-			this->matriz[j][i] = x;				//
-		}							//
-	}								//
-}									//
 // -------------------------------------------------------------------------------------------------------
 
 
@@ -248,9 +220,9 @@ Matriz Matriz::operator !() const {															// Usando una matriz auxiliar
 }																			//
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Matriz Matriz::operator *(const Matriz &q) const {													// Verificando que se
-	if(this->columnas != q.filas){															// pueda realizar el
+	if(this->filas != q.columnas){															// pueda realizar el
 		cout << "No es posible realizar el producto matricial para estas matrices." << endl;							// producto matricial
-		return q;																// (si la cantidad de
+		return q;															// (si la cantidad de
 	}																		// filas de una coincide
 	int producto_filas = this->filas;														// con la cantidad de
 	int producto_col = q.columnas;															// columnas de otra),
