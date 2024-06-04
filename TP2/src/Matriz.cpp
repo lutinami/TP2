@@ -7,9 +7,7 @@
 #include "Matriz.h"
 #include <vector>
 #include <iostream>
-#include <algorithm>
-#include <string>
-#include <numeric>
+#include <algorithm>	//transform
 #include <cstdlib>
 #include <time.h>
 using namespace std;

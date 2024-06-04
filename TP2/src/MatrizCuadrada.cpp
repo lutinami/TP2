@@ -9,7 +9,7 @@
 #include "MatrizCuadrada.h"
 #include <vector>
 #include <iostream>
-#include <cmath>
+#include <cmath>	//pow
 using namespace std;
 // ------------------------
 
