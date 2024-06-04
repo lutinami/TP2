@@ -7,6 +7,7 @@
 #include <vector>
 #include "Matriz.h"
 #include "MatrizCuadrada.h"
+#include "MatrizIdentidad.h"
 using namespace std;
 
 int main() {
@@ -52,6 +53,21 @@ int main() {
 			<< "es: \n" << inversa_t << endl;
 	MatrizCuadrada division_t = testing/testing;
 	cout << "division de matrices: \n" << division_t << endl;
-
+	MatrizIdentidad test2 = MatrizIdentidad(testing);
+	cout << "\n\n" << test2 << endl;
+	MatrizCuadrada adas = testing*inversa_t;
+	cout << "\n\n" << adas << endl;
+	cout << "\n" << adas.determinante() << endl;
+	MatrizCuadrada xx2 = adas.cortaFilaColumna(1, 1);
+	cout << "\n" << xx2 << endl;
+	cout << "\n" << xx2.determinante() << endl;
+	xx2 = testing.adjunta();
+	cout << "\n" << xx2 << endl;
+	MatrizCuadrada wowe = MatrizCuadrada({{2,-1,0}, {-1,2,-1}, {0,-1,2}});
+	cout << "\n" << wowe << endl;
+	MatrizCuadrada wowe_inv = ~wowe;
+	cout << "\n" << wowe_inv << endl;
+	MatrizCuadrada identidad = wowe*(~wowe);
+	cout << "\n" << identidad << endl;
 	return 0;
 }

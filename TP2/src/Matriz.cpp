@@ -68,7 +68,7 @@ Matriz::Matriz(const Matriz &M) {			// Copia un objeto Matriz a otro
 // SETTERS ----------------------------------------------------------------------------------------------
 void Matriz::setMatriz(vector<vector<double> > mat) {			// Cambia la matriz del objeto
 	this->matriz.clear();						// con un vector 2d
-	this->matriz = mat;`						//
+	this->matriz = mat;						//
 	this->filas = mat.size();					//
 	this->columnas = mat[0].size();					//
 }									//
@@ -235,14 +235,16 @@ Matriz Matriz::operator *(const Matriz &q) const {													// Verificando qu
 	}																		// filas de una coincide
 	int producto_filas = this->filas;														// con la cantidad de
 	int producto_col = q.columnas;															// columnas de otra),
-	Matriz producto = Matriz(producto_filas, producto_col);												// se crea una nueva matriz
-																			// con estos tamaños.
-	for(int i=0; i< filas; i++){															//
-		transform(this->matriz[i].begin(), this->matriz[i].end(),q.matriz[i].begin(), producto.matriz[i].begin(), multiplies<double>());	// Luego, se llena esta matriz
-	}																		// con el producto matricial
-	return producto;																// utilizando las funciones
-}																			// transform() y multiplies<>
-																			// de la bilbioteca algorithm
+	Matriz producto = Matriz(producto_filas, producto_col, 0);									// se crea una nueva matriz
+	for(int i=0;i<producto_filas;i++){
+		for(int j=0;j<producto_col;j++){
+			for(int k=0;k<producto_col;k++){
+				producto.matriz[i][j]+=this->matriz[i][k]*q.matriz[k][j];
+			}
+		}
+	}
+	return producto;
+}																			// de la bilbioteca algorithm
 // ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 

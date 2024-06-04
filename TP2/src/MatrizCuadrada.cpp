@@ -56,7 +56,7 @@ int MatrizCuadrada::getSize_n() {
 
 // Funciones miembro -----------------------------------------------------------------------------------------------------------
 MatrizCuadrada& MatrizCuadrada::ProductoPorEscalar(double esc) {
-	Matriz auxiliar = Matriz(*this);		// adapta la funcion ProductoPorEscalar() de la
+	Matriz auxiliar = Matriz(this->getMatriz());		// adapta la funcion ProductoPorEscalar() de la
 	auxiliar.ProductoPorEscalar(esc);		// clase matriz, transformando sus resultados a
 	*this = MatrizCuadrada(auxiliar.getMatriz());	// una matriz cuadrada
 	return (*this);					//
@@ -108,7 +108,7 @@ MatrizCuadrada MatrizCuadrada::adjunta() {
 	for(int i=0; i<size_n; i++){							// guardando en un auxiliar la
 		for(int j=0; j<size_n; j++){						// matriz, se llena un vector 2d
 			aux_cortada = auxiliar.cortaFilaColumna(i, j);			// con cada elemento:
-			adjunta[i][j] = pow(-1, (i+j))*(aux_cortada.determinante());	// aij = (-1)^(i+j) * det(aux_cortada)
+			adjunta[i][j] = pow(-1, (i+j+2))*(aux_cortada.determinante());	// aij = (-1)^(i+j) * det(aux_cortada)
 		}									// siendo aux_cortada la matriz original,
 	}										// donde se elimina la fila i y la
 	MatrizCuadrada ad = MatrizCuadrada(adjunta);					// columna j.
@@ -156,10 +156,10 @@ MatrizCuadrada MatrizCuadrada::operator *(const MatrizCuadrada &q) const {
 // ------------------------------------------------------------------------------------------------------------------------
 MatrizCuadrada MatrizCuadrada::operator ~() const{
 	MatrizCuadrada inversa = *this;				// Calcula la inversa de una matriz A, siendo				
-	double det_inversa = inversa.determinante();		// A^-1 = ((Adj(A))^T)/det(A)
-	inversa = inversa.adjunta();				// Es decir, la inversa de una matriz sera
-	inversa = !inversa;					// igual al cocientre entre la traspuesta de 
-	inversa = inversa.ProductoPorEscalar(1/det_inversa);	// la adjunta de A y el determinante de A
+	double det_inversa = inversa.determinante();		// A^-1 = ((Adj(A^T)))/det(A)								// el cociente entre la adjunta de la traspuesta de A
+	inversa = inversa.adjunta();
+	inversa = !inversa;							// y su determinante
+	inversa = inversa.ProductoPorEscalar(1/det_inversa);	//
 	return inversa;						//
 }
 // ------------------------------------------------------------------------------------------------------------------------
