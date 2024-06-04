@@ -206,7 +206,7 @@ Matriz Matriz::operator -(const Matriz &q) const {													// Se verifica qu
 		return q;																// Se crea una matriz resta
 	}																		// auxiliar.
 	int resta_filas = this->filas;															// Luego, recorriendo la matriz,
-	int resta_col = (this->columnas;														// se utilizan las funciones
+	int resta_col = this->columnas;															// se utilizan las funciones
 	Matriz resta = Matriz(resta_filas, resta_col);													// transform() y minus<> de la
 																			// biblioteca algorithm para 
 	for(int i=0; i< filas; i++){															// restar las matrices
