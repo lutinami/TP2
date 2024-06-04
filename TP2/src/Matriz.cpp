@@ -187,8 +187,13 @@ ostream& operator<<(ostream& os, Matriz& mat){														// Recorriendo la ma
 }
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Matriz Matriz::operator +(const Matriz &q) const {													// Creando una matriz suma
+	if(this->filas != q.filas && this->columnas != q.filas){
+		cout << "Son de distinto tamaño - no pueden ser sumadas." << endl;
+		return q;
+	}
 	int suma_filas = (this->filas > q.filas)?this->filas:q.filas;											// de filas y columnas igual
 	int suma_col = (this->columnas > q.columnas)?this->columnas:q.columnas;										// a las de la matriz de
+
 	Matriz suma = Matriz(suma_filas, suma_col);													// mayor tamaño.
 																			//
 	for(int i=0; i< filas; i++){															// Luego, recorriendo la matriz,
@@ -198,6 +203,10 @@ Matriz Matriz::operator +(const Matriz &q) const {													// Creando una ma
 }																			// sumar las matrices.
 // ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Matriz Matriz::operator -(const Matriz &q) const {													// Creando una matriz resta
+	if(this->filas != q.filas && this->columnas != q.filas){
+		cout << "Son de distinto tamaño - no pueden ser restadas." << endl;
+		return q;
+	}
 	int resta_filas = (this->filas > q.filas)?this->filas:q.filas;											// de filas y columnas igual
 	int resta_col = (this->columnas > q.columnas)?this->columnas:q.columnas;									// a las de la matriz de
 	Matriz resta = Matriz(resta_filas, resta_col);													// menor tamaño.
