@@ -16,7 +16,7 @@ protected:
 public:
 	// Constructores ----------------------------------------------------------------------------
 	MatrizCuadrada();				// crea una matriz 4x4 de ceros
-	MatrizCuadrada(int n);				// toma el tamaño y la rellena con 1
+	MatrizCuadrada(int n);				// crea una matriz aleatoria de nxn
 	MatrizCuadrada(int n, double a);		// toma el tamaño y con que numero rellenarla
 	MatrizCuadrada(vector<vector<double>> mat);	// toma una vector 2d y crea el objeto
 	// ------------------------------------------------------------------------------------------
